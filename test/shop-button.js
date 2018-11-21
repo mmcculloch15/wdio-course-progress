@@ -1,13 +1,17 @@
+const assert = require('chai').assert
+
 describe('Shop CTA button', () => {
 
   it('should link to the product page', () => {
-    browser.url('./')
+    browser.url('/')
     const title = browser.getTitle()
-    console.log('Title is: ' + title)
+    assert.equal(title, 'Robot Parts Emporium')
     browser.click('.shop-callout a')
     const productTitle = browser.getTitle()
-    console.log('Title is: ' + productTitle)
+    assert.equal(productTitle, 'Totally Not Evil Sentient Robot - Robot Parts Emporium')
+
     const url = browser.getUrl()
-    console.log('url is: ' + url)
+    assert.include(url, 'product-page.html', 'URL Mismatch')
+
   })
 })
